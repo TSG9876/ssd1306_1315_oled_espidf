@@ -94,7 +94,7 @@ void i2c_master_init()
 
     };
     ESP_ERROR_CHECK(i2c_new_master_bus(&bus_cfg, &bus_handle));
-    i2c_master_bus_detect_devices1(bus_handle);
+    i2c_master_bus_detect_devices(bus_handle);
 
     i2c_device_config_t dev_cfg = {
         .dev_addr_length = I2C_ADDR_BIT_LEN_7,
