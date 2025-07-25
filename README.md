@@ -1,7 +1,7 @@
 Project Introduction
 ssd1306_1315_oled_espidf: Lightweight OLED Driver for ESP-IDF
 
-This ESP-IDF-compatible C library provides robust support for SSD1306 and SH1315-based OLED displays on Espressif ESP32/ESP32-S series microcontrollers. Designed for simplicity and efficiency, it enables seamless integration of monochrome OLED screens (128x64 and 128x32 resolutions) into embedded projects using I²C or SPI interfaces.
+This ESP-IDF-compatible C library provides robust support for SSD1306 and SH1315-based OLED displays on Espressif ESP32/ESP32-S series microcontrollers. Designed for simplicity and efficiency, it enables seamless integration of monochrome OLED screens (128x64 resolutions) into embedded projects using I²C or SPI interfaces.
 
 Key Features:
 
