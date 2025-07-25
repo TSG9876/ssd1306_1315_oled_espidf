@@ -12,8 +12,8 @@
 #include "freertos/event_groups.h"
 #include "esp_system.h"
 #include "esp_log.h"
-#include "driver/uart.h"
-#include "driver/gpio.h"
+
+
 #include "sdkconfig.h"
 #include "esp_log.h"
 #include "string.h"
@@ -23,8 +23,7 @@
 #include <ctype.h>
 #include <unistd.h>
 #include "esp_system.h"
-#include "esp_wifi.h"
-#include "esp_event.h"
+
 
 #include "nvs_flash.h"
 
@@ -40,7 +39,7 @@ u8g2_t u8g2;
 i2c_master_bus_handle_t bus_handle;
 i2c_master_dev_handle_t dev_handle;
 
-
+static const char *TAG = "TEST";
 
 esp_err_t i2c_master_bus_detect_devices(i2c_master_bus_handle_t handle)
 {
@@ -146,7 +145,7 @@ uint8_t u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_p
     
         ret = i2c_master_transmit(dev_handle, buffer, buf_ndx, -1);
         vTaskDelay(pdMS_TO_TICKS(20));
-        idx = 0;
+       
         if (ret != ESP_OK)
         {
 
@@ -238,7 +237,8 @@ void u8g2_task()
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Startup...............");
+    
+	ESP_LOGI(TAG, "Startup...............");
     ESP_LOGI(TAG, "Free memory: %lu bytes", esp_get_free_heap_size());
     ESP_LOGI(TAG, "IDF version: %s", esp_get_idf_version());
 
