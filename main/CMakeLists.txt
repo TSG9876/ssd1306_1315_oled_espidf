@@ -1,13 +1,8 @@
-
-
-idf_component_register(SRCS "uart_echo_example_main.c"
+idf_component_register(SRCS "example.c"
                       
-
-
-
-                    INCLUDE_DIRS "."
-                   )
-
+                  INCLUDE_DIRS "."
+            REQUIRES esp_driver_i2c log)
+            
               
-target_add_binary_data(${COMPONENT_TARGET} "index.html" TEXT)
+
 
