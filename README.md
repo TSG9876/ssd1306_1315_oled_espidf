@@ -5,9 +5,9 @@ This ESP-IDF-compatible U8g2  C library provides robust support for SSD1306 and 
 
 Key Features:
 
-🎯 Dual Controller Support: Unified API for both SSD1306 and SH1305 chipsets 
+🎯 Dual Controller Support: Unified API for both SSD1306 and SH1315 chipsets 
 
-⚡ Optimized Performance: Leverages ESP-IDF's HAL for efficient I²C communication
+⚡ Optimized Performance: Leverages ESP-IDF's HAL for efficient I²C communication (Esp-Idf ver 5.x)
 
 🖌️ Versatile Graphics: Built-in primitives (text, shapes, bitmaps) + framebuffer control
 
