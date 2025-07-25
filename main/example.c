@@ -1,4 +1,4 @@
-/* UART Echo Example
+/* U8g2 Oled  Example
 
    This example code is in the Public Domain (or CC0 licensed, at your option.)
 
@@ -36,61 +36,9 @@ extern const uint8_t u8g2_font_helvB10_tr[] U8G2_FONT_SECTION("u8g2_font_helvB10
 extern const uint8_t u8g2_font_8x13_tf[] U8X8_FONT_SECTION(" u8g2_font_8x13_tf");
 
 u8g2_t u8g2;
-// extern const uint8_t
 
-/**
- * This is an example which echos any data it receives on configured UART back to the sender,
- * with hardware flow control turned off. It does not use UART driver event queue.
- *
- * - Port: configured UART
- * - Receive (Rx) buffer: on
- * - Transmit (Tx) buffer: off
- * - Flow control: off
- * - Event queue: off
- * - Pin assignment: see defines below (See Kconfig)
- */
-
-// #define ECHO_TEST_TXD (gpio_num_t)(4)
-// #define ECHO_TEST_RXD (gpio_num_t)(5)
-
-
-
-#define CONFIG_I2C_0_PORT I2C_NUM_0
-#define CONFIG_I2C_0_SDA_IO (gpio_num_t)(5) // blue
-#define CONFIG_I2C_0_SCL_IO (gpio_num_t)(6)
-
-#define CONFIG_I2C_0_MASTER_DEFAULT {  \
-    .clk_source = I2C_CLK_SRC_DEFAULT, \
-    .i2c_port = CONFIG_I2C_0_PORT,     \
-    .scl_io_num = CONFIG_I2C_0_SCL_IO, \
-    .sda_io_num = CONFIG_I2C_0_SDA_IO, \
-    .glitch_ignore_cnt = 7,            \
-    .flags.enable_internal_pullup = true}
-
-i2c_master_bus_handle_t i2c0_bus_hdl;
-i2c_master_bus_handle_t bus_hdl;
 i2c_master_bus_handle_t bus_handle;
 i2c_master_dev_handle_t dev_handle;
-
-i2c_master_dev_handle_t i2c_dev_handle;
-
-i2c_master_bus_config_t i2c0_master_cfg = {
-    .clk_source = I2C_CLK_SRC_DEFAULT,
-    .i2c_port = I2C_NUM_0,
-    .scl_io_num = (gpio_num_t)(10),
-    .sda_io_num = (gpio_num_t)(9),
-    .glitch_ignore_cnt = 7,
-    .flags.enable_internal_pullup = true};
-
-i2c_device_config_t i2c_dev_conf = {
-    .dev_addr_length = I2C_ADDR_BIT_LEN_7,
-    .device_address = 0x3C,
-    .scl_speed_hz = 400000,
-  
-
-};
-
-
 
 
 
@@ -150,7 +98,7 @@ void i2c_master_init()
 
     i2c_device_config_t dev_cfg = {
         .dev_addr_length = I2C_ADDR_BIT_LEN_7,
-        .device_address = 0x3c,
+        .device_address = 0x3c, // Your OLED I2C address
         .scl_speed_hz = 400000,
        
     };
@@ -305,6 +253,6 @@ void app_main(void)
         ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK(ret);
-
+i2c_master_init();
    u8g2_task();
 }
