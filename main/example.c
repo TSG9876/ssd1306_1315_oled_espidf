@@ -42,7 +42,7 @@ i2c_master_dev_handle_t dev_handle;
 
 
 
-esp_err_t i2c_master_bus_detect_devices1(i2c_master_bus_handle_t handle)
+esp_err_t i2c_master_bus_detect_devices(i2c_master_bus_handle_t handle)
 {
     const uint16_t probe_timeout_ms = 50; // timeout in milliseconds
     uint8_t address;
@@ -105,8 +105,7 @@ void i2c_master_init()
     ESP_ERROR_CHECK(i2c_master_bus_add_device(bus_handle, &dev_cfg, &dev_handle));
 }
 
-int idx = 0;
-uint8_t fdata1[55] = {0x00};
+
 
 uint8_t u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
 {
